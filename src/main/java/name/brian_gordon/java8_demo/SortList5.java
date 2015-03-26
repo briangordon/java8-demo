@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Brian Gordon
  */
-public class SortList4 {
+public class SortList5 {
 	public static void main(String[] args) {
 		List<String> items = new ArrayList<>();
 		items.add("Banana");
@@ -17,8 +17,8 @@ public class SortList4 {
 		items.add("Durian");
 		items.add("Kiwi");
 
-		// Sort items in reverse.
-		items.sort(Comparator.reverseOrder());
+		// Sort items by length.
+		items.sort(Comparator.comparing(String::length));
 
 		for(String item : items) {
 			System.out.println(item);
