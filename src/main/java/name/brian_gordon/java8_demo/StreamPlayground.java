@@ -30,19 +30,21 @@ public class StreamPlayground {
 		words.parallelStream().map(word -> "Best word: " + word).forEachOrdered(System.out::println);
 
 		// Mash the words together into one long word.
-		String longWord1 = words.parallelStream().collect(Collectors.joining());
-		StringBuilder longWord2 = words.parallelStream().collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);
+		StringBuilder longWord1 = words.parallelStream().collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);
 		System.out.println(longWord1);
+
+		// That's nice, but there's already a built-in collector for that:
+		String longWord2 = words.parallelStream().collect(Collectors.joining());
 		System.out.println(longWord2);
 
 		// Put spaces between each word.
-		StringBuilder sentence2 = words.stream().collect(StringBuilder::new,
+		StringBuilder sentence1 = words.stream().collect(StringBuilder::new,
 				StringBuilder::append, (acc, str) -> acc.append(str).append(" "));
-		System.out.println(sentence2);
+		System.out.println(sentence1);
 
-		// Append all of the words together into a sentence (better).
-		String sentence = words.parallelStream().reduce("", (accum, str) -> accum += (" " + str));
-		System.out.println(sentence);
+		// That's nice, but there's already a built-in collector for that:
+		String sentence2 = words.parallelStream().collect(Collectors.joining(" "));
+		System.out.println(sentence2);
 
 		// Group the words by length.
 		Map<Integer, List<String>> wordsByLength = words.parallelStream()
@@ -54,6 +56,5 @@ public class StreamPlayground {
 		System.out.println(Arrays.stream(numbers).reduce(0, (a, b) -> a + b));
 		System.out.println(Arrays.stream(numbers).reduce(0, Integer::sum));
 		System.out.println(Arrays.stream(numbers).sum());
-
 	}
 }
