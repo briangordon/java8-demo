@@ -22,4 +22,8 @@ public class MultipleInheritance {
 			Parent2.super.printName();
 		}
 	}
+
+	public static void main(String[] args) {
+		new Child().printName();
+	}
 }

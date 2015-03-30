@@ -10,7 +10,7 @@ import java.io.FileFilter;
  */
 public class HiddenFilePrinter3 {
 	public static void main(String[] args) {
-		File[] files = new File("/Users/brian/").listFiles((File f) -> f.isHidden()); // TODO
+		File[] files = new File("/Users/brian/").listFiles((File f) -> f.isHidden());
 		for(File file : files) { // Java 5!
 			System.out.println(file.getName());
 		}

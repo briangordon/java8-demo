@@ -19,7 +19,7 @@ public class StreamPlayground {
 		words.stream().distinct().forEachOrdered(System.out::println);
 
 		// Get the first 3 words.
-		List<String> firstThree = words.parallelStream().sequential().limit(3).collect(Collectors.toList());
+		List<String> firstThree = words.parallelStream().limit(3).collect(Collectors.toList());
 		firstThree.forEach(System.out::println);
 
 		// Count the number of strings which end with a consonant.
@@ -27,7 +27,7 @@ public class StreamPlayground {
 		System.out.println(count + " strings end with a consonant.");
 
 		// Add a prefix to each word.
-		words.parallelStream().map(word -> "Best word: " + word).forEachOrdered(System.out::println);
+		words.stream().map(word -> "Best word: " + word).forEach(System.out::println);
 
 		// Mash the words together into one long word.
 		StringBuilder longWord1 = words.parallelStream().collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);

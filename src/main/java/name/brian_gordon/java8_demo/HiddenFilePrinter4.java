@@ -11,7 +11,7 @@ import java.util.function.Predicate;
  */
 public class HiddenFilePrinter4 {
 	public static void main(String[] args) {
-		File[] files = new File("/Users/brian/").listFiles(File::isHidden); // Directory?
+		File[] files = new File("/Users/brian/").listFiles(f -> f.isHidden() && f.isDirectory());
 		for(File file : files) {
 			System.out.println(file.getName());
 		}
